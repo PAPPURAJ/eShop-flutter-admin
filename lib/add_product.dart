@@ -15,6 +15,7 @@ var _ID;
 var PHOTOGRAPH_FIRE="Product";
 var PHOTOGRAPH="Photograph";
 TextEditingController nameCont = TextEditingController();
+TextEditingController priceCont = TextEditingController();
 BuildContext? cnxt;
 
 class AddPhotographyMain extends StatelessWidget {
@@ -117,6 +118,10 @@ class _MainPageState extends State<AddPhotography> {
                   controller: nameCont,
                 ),
                 Space(48),
+                TextField(
+                  controller: priceCont,
+                ),
+                Space(48),
                 ButtonWidget(
                   text: 'Upload File',
                   icon: Icons.cloud_upload_outlined,
@@ -159,6 +164,7 @@ class _MainPageState extends State<AddPhotography> {
     data["FileName"] = fileName;
     data["Date"] = getDate();
     data['Time'] = getTime();
+    data['Price']=priceCont.text.isEmpty ? "0.00" : priceCont.text;
 
     FirebaseFirestore.instance
         .collection(PHOTOGRAPH_FIRE)
