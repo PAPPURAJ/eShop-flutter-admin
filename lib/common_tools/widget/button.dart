@@ -20,12 +20,16 @@ Widget myButton(
   );
 }
 
+
 Widget myRactanButton(BuildContext context, String text, Function function,
     double widthRatio, Color colors) {
   return Container(
     padding: EdgeInsets.symmetric(vertical: 16.0),
     width: MediaQuery.of(context).size.width * widthRatio,
     child: ElevatedButton(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all<Color>(Colors.deepPurple), // Set button background color to purple
+      ),
       onPressed: () {
         function();
       },

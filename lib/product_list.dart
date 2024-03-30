@@ -34,7 +34,7 @@ class _ProductState extends State<ProductMain> {
         children: [
           Space(40),
           const Text(
-            "Products",
+            "Products List",
             style: TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.w600,
@@ -126,18 +126,14 @@ class _ProductState extends State<ProductMain> {
                                   Positioned(
                                     bottom: 10,
                                     right: 10,
-                                    child: Text(
+                                    child: Text('Price: '+
                                       snapshot.data!.docs
-                                              .map((e) => e['Time'])
-                                              .elementAt(index) +
-                                          " " +
-                                          snapshot.data!.docs
-                                              .map((e) => e['Date'])
+                                              .map((e) => e['Price'])
                                               .elementAt(index),
                                       style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 10,
-                                        color: Colors.white,
+                                        color: Colors.green,
                                         //backgroundColor: Color.fromRGBO(255, 255, 255, 150)
                                       ),
                                     ),
@@ -152,7 +148,7 @@ class _ProductState extends State<ProductMain> {
                                       style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 12,
-                                        color: Colors.white,
+                                        color: Colors.green,
                                       ),
                                     ),
                                   )

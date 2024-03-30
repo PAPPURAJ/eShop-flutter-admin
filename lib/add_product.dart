@@ -106,24 +106,31 @@ class _MainPageState extends State<AddPhotography> {
                         : Container(
                       height: 200,
                       width: 200,
-                      decoration: BoxDecoration(color: Colors.blueAccent),
-                      child: Image(
+                      decoration: const BoxDecoration(color: Colors.blueAccent),
+                      child: const Image(
                           image: AssetImage(
-                              'assets/images/select image.png')),
+                              'assets/selectimage.png')),
                     ),
                   ),
                 ),
                 Space(48),
                 TextField(
                   controller: nameCont,
+                  decoration: const InputDecoration(
+                      hintText: "Enter name"
+                  ),
                 ),
                 Space(48),
                 TextField(
                   controller: priceCont,
+                  decoration: const InputDecoration(
+                    hintText: "Enter price"
+                  ),
+
                 ),
                 Space(48),
                 ButtonWidget(
-                  text: 'Upload File',
+                  text: 'Upload product',
                   icon: Icons.cloud_upload_outlined,
                   onClicked: () {
                     uploadFile();

@@ -12,50 +12,39 @@ void deleteFireDialog(BuildContext context, DocumentReference reference,
   showDialog(
       context: context,
       builder: (context) => Dialog(
-            child: Container(
-              child: ListView(
-                shrinkWrap: true,
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(20),
-                    height: 200,
-                    width: 200,
-                    decoration: BoxDecoration(color: Colors.white),
-                    child: Image(
-                        image: AssetImage('assets/images/directory_icon.png')),
-                  ),
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  height: 200,
+                  width: 200,
+                  decoration: const BoxDecoration(color: Colors.white),
+                  child: const Image(
+                      image: AssetImage('assets/images/directory_icon.png')),
+                ),
 
-                  // SizedBox(
-                  //   height: 20,
-                  // ),
-                  //
-                  // ButtonWidget(
-                  //   text: 'Update',
-                  //   icon: Icons.cloud_upload_outlined, onClicked: () {
-                  //
-                  // },
-                  // ),
-                  Space(20),
-                  myRactanButton(context, "Delete", () {
-                    reference.delete().whenComplete(() {
-                      if (storageURL.isNotEmpty) {
-                        FirebaseStorage.instance
-                            .refFromURL(storageURL)
-                            .delete()
-                            .whenComplete(() {
-                          Fluttertoast.showToast(msg: 'Deleted!');
-                          function();
-                          Navigator.pop(context);
-                        });
-                      } else {
+
+                Space(20),
+                myRactanButton(context, "Delete", () {
+                  reference.delete().whenComplete(() {
+                    if (storageURL.isNotEmpty) {
+                      FirebaseStorage.instance
+                          .refFromURL(storageURL)
+                          .delete()
+                          .whenComplete(() {
                         Fluttertoast.showToast(msg: 'Deleted!');
                         function();
                         Navigator.pop(context);
-                      }
-                    });
-                  }, 0.9, Colors.red),
-                ],
-              ),
+                      });
+                    } else {
+                      Fluttertoast.showToast(msg: 'Deleted!');
+                      function();
+                      Navigator.pop(context);
+                    }
+                  });
+                }, 0.9, Colors.red),
+              ],
             ),
           ));
 }
